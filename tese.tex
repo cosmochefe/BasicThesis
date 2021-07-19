@@ -1,0 +1,317 @@
+%
+% Documento de exemplo para monografias, dissertações e teses. Este documento segue, com poucas exceções, as regras gerais da Associação Brasileira de Normas Técnicas (ABNT).
+%
+% Criado por Alvaro Costa Neto em 28 de junho de 2021.
+% Para ser usado com os drivers XeLaTeX e Biber.
+% Licença [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+%
+% As opções disponíveis para a classe são:
+% - 10pt, 11pt, 12pt: definem o tamanho base da fonte. O padrão é 10pt;
+% - draft: marca o documento como rascunho. Não mostra as figuras e indica onde estão ocorrendo falhas de tipografia com um bloco preto;
+% - oneside: centraliza o corpo de texto e tipografa em páginas corridas, sem diferenciar margens para páginas pares ou ímpares;
+% - sanstitles: usa fontes sem serifa nos títulos. Sem esta opção, os títulos serão grafados usando as mesmas fontes do restante do documento;
+%
+% As opções seguintes definem fontes padronizadas para o documento. Se nenhuma das opções abaixo for escolhida, as fontes padrões do LaTeX (família Latin Modern) serão usadas. Para obter qualquer uma das fontes, procure pelos nomes listados em alguma página que disponibilize fontes gratuitas e de forma legal.
+% - libertinus:
+%   - Libertinus Serif, Libertinus Sans, Libertinus Math e IBM Plex Mono;
+%
+% - termes (substitui a fonte Times New Roman):
+%   - TeX Gyre Termes, QTHelvetCnd, TeX Gyre Termes Math e IBM Plex Mono;
+%
+% - schola:
+%   - TeX Gyre Schola, Inria Sans, TeX Gyre Schole Math e IBM Plex Mono;
+%
+% - pagella (substitui a fonte Palatino):
+%   - TeX Gyre Pagella, PT Sans, TeX Gyre Pagella Math e IBM Plex Mono;
+%
+% - bonum (substitui a fonte Bookman):
+%   - TeX Gyre Bonum, Robot Condensed, TeX Gyre Bonum Math e IBM Plex Mono;
+%
+% - dejavu:
+%   - DejaVu Serif, PT Sans Narrow, TeX Gyre DejaVu Math e IBM Plex Mono;
+%
+% - stix:
+%   - STIX Two Text, PT Sans Narrow, STIX Two Math e IBM Plex Mono;
+%
+% - garamond:
+%   - EBGaramon, Open Sans, Garamond-Math e IBM Plex Mono;
+%
+% - erewhon:
+%   - Heuristica, PT Sans Narrow, Erewhon Math e IBM Plex Mono;
+%
+% - source (não possui símbolos matemáticos dedicados):
+%   - Source Serif Pro, Source Sans Pro, Erewhon Math e Source Code Pro;
+%
+% - plex (não possui símbolos matemáticos dedicados):
+%   - IBM Plex Serif, IBM Plex Sans, Erewhon Math e IBM Plex Mono; 
+%
+% Caso queira mudar as fontes e usar as que você escolher, use os comandos "\setmainfont" e seus equivalentes conforme exemplo mais abaixo. No entanto, devo sugerir que consulte as regras instituicionais para averiguar quais fontes *devem* ser usadas. Caso a instituição cobre o uso de fontes comerciais, procure usar as equivalentes gratuitas que listei acima. Por exemplo, se for exigida a fonte Times New Roman, use a TeX Gyre Termes que é gratuita.
+%
+% Uma última observação importante: dois avisos ("warnings") podem aparecer devido a dois pacotes que estão sendo usados pela classe. Eles são inofensivos, ignore-os!
+%
+\documentclass[source, sanstitles]{basicthesis}
+%
+% Adicione os pacotes que precisar, lembrando que alguns já são carregados pela classe: "unicode-math", "polyglossia", "titlesec", "caption", "csquotes", "biblatex" e "booktabs". Caso as opções "source" ou "plex" forem usadas, o pacote "mathastext" também será carregado.
+%
+% Para saber mais sobre cada pacote, ou para procurar mais pacotes, acesse a página do [Comprehensive TeX Archive Network (CTAN)](https://ctan.org).
+%
+% Uma aviso de amigo: o uso exagerado de pacotes no LaTeX costuma trazer mais problemas do que ajudar. Os que foram incluídos na classe e nas linhas abaixo, geralmente são suficientes. Se precisar de algo muito específico, como desenhar tabelas muito longas, fazer esquemas eletrônicos ou escrever fórmulas químicas, faça um teste "em branco" com este arquivo padrão antes de incluir no seu documento.
+%
+
+%
+% PACOTES.
+%
+
+\usepackage{hyperref}        % Cria links no documento (sumário, lista de figuras etc.)
+\usepackage{graphicx}        % Necessário para incluir figuras no seu documento.
+\usepackage{array, multirow} % Funcionalidades extras para tabelas.
+\usepackage[xetex, dvipsnames]{xcolor} % Permite usar cores no documento.
+%
+% Os pacotes a seguir geralmente são usados em áreas específicas e não servirão para todos. Inclua somente se for necessário!
+%
+\usepackage{listings}        % Códigos-fonte com formatação adequada.
+\usepackage{tikz}            % Desenhos e gráficos vetoriais no LaTeX.
+%
+% Pacotes utilitários para auxiliar durante a escrita. Após finalizar o documento, retire-os.
+%
+\usepackage{lipsum}          % Útil para criar texto de teste para seu documento.
+
+%
+% CONFIGURAÇÕES.
+%
+
+% Pasta com as figuras.
+\graphicspath{{figuras/}}
+% Configura a tipografia dos códigos-fonte pelo pacote "listings".
+\lstset{
+    basicstyle=\small\ttfamily,
+    keywordstyle=\bfseries,
+    identifierstyle=,
+    commentstyle=\color{lightgray}\itshape,
+    stringstyle=\color{gray},
+    showstringspaces=false
+}
+
+%
+% A classe já fornece diversas opções padronizadas de fontes, mas se quiser escolher fontes específicas para seu documento, habilite e modifique os comandos abaixo. Lembre-se, no entanto, que nem todas as fontes possuem caracteres adequados para o seu texto, principalmente se for usar fórmulas matemáticas. Além disso, atente-se ao recado acima sobre fontes gratuitas.
+%
+% Usada no corpo do texto.
+% \setmainfont{Libertinus Serif}
+% Caracteres matemáticos dedicados.
+% \setmathfont{Libertinus Math}
+% Usada nos títulos se a opção "sanstitles" for escolhida.
+% \setsansfont{Libertinus Sans}
+% Usada para códigos-fonte etc.
+% \setmonofont{IBM Plex Mono}[Scale=MatchLowercase]
+%
+
+% Adicione o arquivo contendo as referências bibliográficas do seu documento.
+\addbibresource{bibliografia.bib}
+
+%
+% METADADOS.
+%
+
+% Configuração do documento (metadados). Os opcionais estão marcados como tal.
+\title{Sobre tudo e nada mais} % Título.
+\subtitle{Uma visão parcialmente completa} % Subtítulo, opcional.
+
+\firstauthor{José Skywalker}{Skywalker, José} % Primeiro autor.
+\secondauthor{Antônio Fett}{Fett, Antônio} % Segundo autor, opcional.
+
+\date{\today} % Data da defesa.
+\deposityear{2021} % Ano do depósito.
+
+\city{Tatooine} % Cidade do depósito.
+
+\type{Tese} % Tipo: tese, dissertação ou monografia.
+\numberofpages{30} % Total de páginas. O LaTeX não consegue calcular sozinho...
+
+\program{Programa de Pós-graduação em Filosofia Paranormal} % Programa ou curso.
+\institution{Universidade de Tatooine} % Instituição.
+\degree{Doutorado}{Doutor em História Jediana} % Nível e título.
+\focusarea{Controle Mental} % Área de concentração.
+
+\supervisor{Prof. Dr. Mestre Yoda}{Universidade de Tython} % Orientador e sua instituição.
+\cosupervisor{Prof. Dr. Imperador Palpatine}{Universidade Interplanetária Sith} % Coorientador e sua instituição, opcional.
+
+ % Ficha catalográfica. Verifique na biblioteca quais informações adicionar!
+\catalogcomments{Em cores}
+\catalogkeywords{1. A Vida. 2. O Universo. 3. Tudo mais. I. Título. II. Subtítulo}
+
+% Membros da banca. A quantidade vai depender das regras da sua instituição ou programa.
+\firstcommiteemember{Prof. Dr. Luke Skywalker}{Universidade da Força}{Aprovado}
+\secondcommiteemember{Prof. Dr. Darth Vader}{Universidade Sith}{Reprovado}
+\thirdcommiteemember{Profª. Drª. Leia Skywalker}{Universidade da Força}{Aprovado}
+\fourthcommiteemember{Prof. Dr. Han Solo}{Instituto Politécnico Ilegal}{Aprovado}
+\fifthcommiteemember{Chewbacca (Chewie)}{Deus-Sabe-de-Onde}{Aprovado}
+
+%
+% INÍCIO DO DOCUMENTO.
+%
+% Alguns comentários que podem ajudar:
+% 1) A ordem dos capítulos do pré-texto e do pós-texto já está de acordo com as regras da ABNT;
+% 2) Alguns capítulos do pré e do pós-texto são obrigatórios, enquanto outros são opcionais. Verifique quais dos opcionais são indicados (ou necessários) para o seu documento e remova os que não for usar---ou apenas comente-os incluindo o símbolo "%" no início de suas linhas;
+% 3) Os capítulos do texto são apenas sugestões. Modifique para atender às necessidades específicas do seu documento ou das regras da sua instituição e programa;
+% 4) Não mude a ordem ou remova os comandos "\frontmatter", "\mainmatter" e "\backmatter". Eles configuram os documento para o pré-texto, texto e pós-texto, respectivamente;
+% 5) Para evitar deixar o código muito poluído, é indicado separá-lo em arquivos diferentes e incluí-los aqui ao invés de digitar todo o conteúdo em um só arquivo.
+%
+\begin{document}
+
+%
+% PRÉ-TEXTO.
+%
+% Não coloque nada antes deste comando!
+%
+\frontmatter
+
+% Contra-capa, obrigatório.
+\backcover
+
+% Errata, opcional. As colunas são: "página", "linha", "onde se lê" e "leia-se". Não esqueça de adicionar a quebra linha ("\\").
+\corrections{
+    1 & 1 & Sith & Jedi \\
+}
+
+% Folha de autorização e ficha catalográfica, obrigatório.
+\authorization
+
+% Folha de aprovação, obrigatório.
+\approval
+
+% Dedicatória, "opcional". Lembre-se: família, amigos, colegas etc.
+\inscription{
+    Dedicamos este trabalho aos nosso familiares, amigos e colegas que tanto nos apoiaram durante estes últimos seis anos. Apesar de afastados por vários \emph{parsecs}, nossos corações sempre estiveram com vocês.
+}
+
+% Agradecimentos, "opcional". Não esqueça de agradecer ao menos aqueles que te orientaram e os órgãos de fomento!
+\acknowledgement{
+    Agradecemos nossos orientadores, Mestre Yoda e Imperador Palpatine, por se unirem nesta árdua tarefa de nos orientar, mesmo quando as reuniões acaloradas terminaram em destruição completa do Departamento. Agradecemos também à Universidade de Tatooine e seu maravilhoso programa de bolsa \emph{Meu Padawan, Minha Vida} por todo o suporte financeiro durante estes desafiadores anos de trabalho.
+}
+
+% Epígrafe, opcional.
+\epigraphchapter{
+    \setlength{\parskip}{12pt}  % Adiciona espaço entre os parágrafos (estrofes).
+    \setlength{\parindent}{0pt} % Remove a tabulação.
+    \textsc{\large No meio do parsec}
+    
+    No meio do \emph{parsec} tinha uma galáxia \\
+    tinha uma galáxia no meio do \emph{parsec} \\
+    tinha uma galáxia \\
+    no meio do \emph{parsec} tinha uma galáxia.
+    
+    Nunca me esquecerei desse acontecimento \\
+    na vida de minhas turbinas tão fatigadas. \\
+    Nunca me esquecerei que no meio do \emph{parsec} \\
+    tinha uma galáxia \\
+    tinha uma galáxia no meio do \emph{parsec} \\
+    no meio do \emph{parsec} tinha uma galáxia.
+    
+    --- \textit{Han Drummond de Andrômeda}
+}
+
+% Resumo, obrigatório.
+\portugueseabstract{
+    Esta singela análise da história Jediana tem por objetivo propor um caminho de conciliação entre Sith e Jedi, visando findar definitivamente esta guerra inútil que vem destruindo a galáxia há milênios. São relatadas as experiências de diversos habitantes nos inúmeros planetas habitados que foram alvos, diretos ou indiretos, do combate entre Jedi e Sith. Também são definidos guias de conduta, baseados em psicologia reversa, para evitar desesquilíbrios desnecessários na Força. Por fim, como trabalhos futuros, são sugeridas pesquisas de opinião entre os membros da República e do Império, almejando estabelecer uma visão geral dos medos, anseios e alegrias vividas pelo membros de ambas as facções.
+}{Vida. Universo. Tudo mais.} % Palavras-chave.
+
+% Abstract, obrigatório.
+\englishabstract{
+    Would someone please translate the \emph{resumo}? Pleeease!?
+}{Life. Universe. Everything else.} % Keywords.
+
+% Lista de figuras, opcional. Inclua se houver figuras no seu documento.
+\listoffigures
+
+% Lista de tabelas, opcional. Inclua se houver tabelas no seu documento.
+\listoftables
+
+% Listas diversas, opcionais. Crie quantos tipos de lista julgar necessário. Use os exemplos abaixo como base.
+\chapter{Lista de Siglas}
+\begin{definition}
+    \item[CUJ] Conselho Universal Jedi
+    \item[LSFA] Liga Sith de Futebol Amador
+\end{definition}
+
+% Sumário, obrigatório.
+\tableofcontents
+
+%
+% TEXTO.
+%
+% Não coloque capítulos de texto antes deste comando!
+%
+% Os capítulos a seguir são apenas sugestões. Veja com seu orientador quais capítulos, seções etc. devem ser colocados no seu documento.
+%
+\mainmatter
+
+% Os capítulos poderiam ser digitados diretamente neste arquivo, no entanto, é boa prática separá-los para facilitar a organização do documento.
+\input{introdução}
+\input{fundamentação}
+\input{desenvolvimento}
+\input{resultados}
+\input{conclusão}
+
+%
+% PÓS-TEXTO.
+%
+% Não coloque capítulos de texto após este comando!
+%
+\backmatter
+
+% Bibliografia, obrigatório.
+\printbibliography[heading=bibintoc]
+
+% Glossário, opcional.
+\backglossary{
+    \begin{definition}[Força]
+        \item[Força] Elemento sobrenatural que conecta tudo e todos. Está presente nos seres vivos, objetos inanimados e no vácuo do espaço.
+        \item[Jedi] Cavalheiros defensores da justiça e da ordem por meio da Força. A Ordem Jedi remonta milhares de anos e tem seu núcleo de atuação em \emph{Uma Galáxia Distante}.
+        \item[Sith] Inverso de Jedi.
+    \end{definition}
+}
+
+% Apêndices, opcional.
+\appendices
+% Para cada apêndice, adicione um comando como o que está abaixo.
+\appendix{Formulário de auto-avaliação}{
+    Nome: \hrulefill \\
+    Planeta de nascimento: \hrulefill
+}
+
+% Anexos, opcional.
+\annexes
+% Para cada anexo, adicione um comando como o que está abaixo.
+\annex{Carta Magna da Ordem Jedi}{
+    Nós aqui reunidos em Tython nos declaramos \emph{Jedi}\footnote{Registro de marca pendente.} e juramos defender a honra, a paz e a ordem da galáxia, sempre empregando a Força de maneira responsável para auxiliar os mais necessitados. Também declaramos que mover objetos com o poder da mente por motivos cômicos é permitido, desde que não haja risco à saúde pública.
+    
+    Por ser verdade, assinamos abaixo em concordância,
+    
+    \vspace{36pt}
+    Tython, 29 A.T.
+}
+
+% Índice, opcional. A construção de índices no LaTeX não é automatizada, portanto é necessário criar as entradas manualmente.
+\remissiveindex{
+    \section{A}
+    \begin{itemize}
+        \item Abadia, 2
+        \item Alabastro, 1, 5
+    \end{itemize}
+    \section{O}
+    \begin{itemize}
+        \item Ordem
+        \begin{itemize}
+            \item Jedi, 1, 2, 3
+            \item Sith, 3, 4
+        \end{itemize}
+        \item Organização, 10
+    \end{itemize}
+}
+
+%
+% FIM DO DOCUMENTO.
+%
+% Não coloque absolutamente nada após este comando!
+%
+\end{document}
